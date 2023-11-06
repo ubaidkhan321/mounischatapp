@@ -1,5 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:multichatapp/Screens/home_screen.dart';
 import 'package:multichatapp/Utility/toastmasseage.dart';
 import 'package:multichatapp/const/const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,7 +16,16 @@ class AuthController extends GetxController {
     UserCredential? userCredential;
 
     try {
-     userCredential = await auth.signInWithEmailAndPassword(email: semail, password: spassword);
+     userCredential = await auth.signInWithEmailAndPassword(email: semail, password: spassword).then((value){
+      if(auth.currentUser!.emailVerified){
+        Utils().toastMessage("Login Sucessfully");
+        Get.to(()=> const HomeScreen());
+      }else{
+         Utils().toastMessage(
+            "Please verify your email by clicking on link sending to you email");
+        auth.currentUser!.sendEmailVerification();
+      }
+     } );
     } on FirebaseAuthException catch (e) {
       Utils().toastMessage(e.toString());
     }
@@ -34,6 +44,8 @@ class AuthController extends GetxController {
     }
     return userCredential;
   }
+
+  
   //Signout
 
   signout({context})async{

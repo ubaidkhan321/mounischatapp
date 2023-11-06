@@ -42,3 +42,27 @@ class ButtonScreen extends StatelessWidget {
     );
   }
 }
+
+
+Widget ourbutton({title,onpress, bool loading = false}){
+ return ElevatedButton(
+   style: ButtonStyle(
+        padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(15)),
+        backgroundColor: MaterialStateProperty.all<Color>(green),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.0),
+            side: const BorderSide(color: Colors.white)
+          )
+        )
+   ),
+  
+  onPressed: onpress,
+            child:  Center(
+               child:   loading ? const  CircularProgressIndicator(strokeWidth: 3,color: Colors.white,) :
+              Text(title,style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)
+                 // title!.text.color(textcolor).fontWeight(FontWeight.bold).make(),
+            ),
+      );
+    
+}

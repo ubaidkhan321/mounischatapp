@@ -8,4 +8,4 @@ const Color lightGrey = Color.fromRGBO(239, 239, 239, 1);
 const Color redColor = Color.fromRGBO(230, 46, 4, 1);
 const Color golden = Color.fromRGBO(255, 168, 0, 1);
 const Color black = Colors.black; 
-const Color green = Color.fromARGB(255, 40, 139, 98);
+const Color green =  Color.fromARGB(255, 15, 126, 80);
