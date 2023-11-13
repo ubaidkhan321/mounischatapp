@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:multichatapp/Auth/Login.dart';
-import 'package:multichatapp/Screens/home_screen.dart';
+import 'package:multichatapp/Screens/navbar.dart';
 import 'package:multichatapp/component/applogo.dart';
 import 'package:multichatapp/component/firebase_controller.dart';
 import 'package:multichatapp/const/const.dart';
@@ -24,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
         if(user ==null && mounted){
           Get.to(()=> const LoginScreen());
         }else{
-          Get.to(()=>const  HomeScreen());
+          Get.to(()=>const  NavbarScreen());
         }
 
         });

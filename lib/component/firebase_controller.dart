@@ -1,6 +1,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:multichatapp/Screens/home_screen.dart';
+import 'package:multichatapp/Screens/navbar.dart';
 import 'package:multichatapp/Utility/toastmasseage.dart';
 import 'package:multichatapp/const/const.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,7 +19,7 @@ class AuthController extends GetxController {
      userCredential = await auth.signInWithEmailAndPassword(email: semail, password: spassword).then((value){
       if(auth.currentUser!.emailVerified){
         Utils().toastMessage("Login Sucessfully");
-        Get.to(()=> const HomeScreen());
+        Get.to(()=> const NavbarScreen());
       }else{
          Utils().toastMessage(
             "Please verify your email by clicking on link sending to you email");
@@ -66,7 +66,7 @@ class AuthController extends GetxController {
     DocumentReference store =
         await firestore.collection(usercollection).doc(currentuser!.uid);
     store.set(
-        {'name': name, 'password': password, 'email': email, 'imageurl': '','id' :currentuser!.uid,
+        {'name': name, 'password': password, 'email': email, 'imageurl': '','id' :currentuser!.uid, 
          
         
         });
