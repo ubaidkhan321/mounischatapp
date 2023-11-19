@@ -5,9 +5,12 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:multichatapp/Auth/Login.dart';
 import 'package:multichatapp/Screens/edit_profile.dart';
+import 'package:multichatapp/Screens/friendprofile_Screen/myfriend.dart';
 import 'package:multichatapp/Service/firebase_service.dart';
-import 'package:multichatapp/const/List.dart';
+import 'package:multichatapp/Utility/toastmasseage.dart';
+import 'package:multichatapp/component/firebase_controller.dart';
 import 'package:multichatapp/const/const.dart';
 import 'package:multichatapp/controller/profile_controller.dart';
 
@@ -87,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               10.heightBox,
 
                               ListView.separated(
-                                 itemCount: profileiconlist.length,
+                                 itemCount: 4,
                                 shrinkWrap: true,
                                  separatorBuilder: (context,index){
                                   return const Divider();
@@ -98,10 +101,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     title:
                                     Text(
                                    
-                                    index == 0 ? data['name'] : index == 1 ? data['email']  : "Logout" ),
+                                    index == 0 ? data['name'] : index == 1 ? data['email']: index == 2 ? "Add Friends"  : "Logout" ),
                                     
                                      
-                                    trailing: profileiconlist[index],
+                                    trailing: index == 0 ? const Icon(Icons.email):index == 1 ? const Icon(Icons.person):index == 2 ? const Icon(Icons.person_add).onTap(() {
+                                      Get.off(()=> const FriendHomeScreen() );
+                                    }) : const Icon(Icons.logout).onTap(() {
+                                       try{
+                                         Get.put(AuthController()).signout(context: context);
+                                          Get.offAll(const LoginScreen());
+                                           }catch(e){
+                                            Utils().toastMessage(e.toString());
+    }
+   
+                                     })
+                                    
+                                    
+                                    
+                                    //profileiconlist[index],
                                   
                                   );
 

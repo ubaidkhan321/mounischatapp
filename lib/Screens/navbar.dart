@@ -25,6 +25,7 @@ class _NavbarScreenState extends State<NavbarScreen> {
 
  var navbody = [
   const  SeaerchFriend(),
+
    Container(color: Colors.green,),
    const ProfileScreen()
  ];

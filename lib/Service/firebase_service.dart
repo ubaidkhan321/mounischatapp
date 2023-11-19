@@ -13,7 +13,7 @@ class Firebaseservice {
   static fatchuser(){
     return firestore.collection(usercollection).snapshots();
   }
-  static getname(name){
-    return firestore.collection(usercollection).where('id',isEqualTo: name).snapshots();
+  static getname({uid}){
+    return firestore.collection(usercollection).where('id',isEqualTo: uid).snapshots();
   }
 }

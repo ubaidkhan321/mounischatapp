@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:multichatapp/Screens/profile.dart';
+import 'package:multichatapp/Screens/friendprofile_Screen/userwiseProfile.dart';
 import 'package:multichatapp/Service/firebase_service.dart';
 import 'package:multichatapp/const/const.dart';
 
@@ -36,7 +36,12 @@ class _SeaerchFriendState extends State<SeaerchFriend> {
         backgroundColor: green,
         automaticallyImplyLeading: false,
       ),
-      body: SafeArea(
+      body:
+      
+      
+      
+      
+       SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -79,9 +84,10 @@ class _SeaerchFriendState extends State<SeaerchFriend> {
                       );
                      }
                      else{
-                      var username = snaphot.data!.docs;
+                     
                
-                      return Expanded(child: ListView.builder(
+                      return Expanded(
+                        child: ListView.builder(
                         
                         itemCount: snaphot.data!.docs.length,
                         itemBuilder: (context,index){
@@ -89,7 +95,8 @@ class _SeaerchFriendState extends State<SeaerchFriend> {
                           if(searchcontroller.text.isEmpty){
                              return InkWell(
                               onTap: (){
-                                Get.to(()=>  ProfileScreen(data: username[index]['id'],));
+                                Get.to(()=> const  UserWiseprfile());
+                                
                                
                               },
                                child: ListTile(
@@ -107,7 +114,7 @@ class _SeaerchFriendState extends State<SeaerchFriend> {
                         else if(name.toLowerCase().contains(searchcontroller.text.toLowerCase().toLowerCase())){
                              return InkWell(
                               onTap: (){
-                              Get.to(()=>  ProfileScreen(data: username[index]['id'],));
+                              Get.to(()=> const  UserWiseprfile());
 
                               },
                                child: ListTile(
@@ -133,7 +140,8 @@ class _SeaerchFriendState extends State<SeaerchFriend> {
 
                      }
                           
-            })
+            }//streambuikder
+            )//streambuikder
       
           ],
         ).box.white.padding( const EdgeInsets.all(8)).width(context.screenWidth-50).roundedSM.shadowSm.margin( const EdgeInsets.only(top: 20,left: 20)).make()

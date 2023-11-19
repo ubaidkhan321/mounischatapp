@@ -16,20 +16,20 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   var Controls = Get.put(AuthController());
 
-  chnageScreen(){
-     Future.delayed( const Duration(seconds: 3),(){
-       //Get.to(()=> const LoginScreen());
-       //if user is login then go direct home Screen...
-       auth.authStateChanges().listen((User? user) {
+   chnageScreen(){
+      Future.delayed( const Duration(seconds: 3),(){
+      //  //Get.to(()=> const LoginScreen());
+      // if user is login then go direct home Screen...
+      auth.authStateChanges().listen((User? user) {
         if(user ==null && mounted){
           Get.to(()=> const LoginScreen());
         }else{
           Get.to(()=>const  NavbarScreen());
         }
 
-        });
+       });
      });
-  }
+   }
   @override
   void initState() {
     // TODO: implement initState
