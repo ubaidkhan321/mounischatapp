@@ -5,15 +5,17 @@ class Firebaseservice {
     return firestore
         .collection(usercollection)
         .where('id', isEqualTo: uid)
-      
-      
         .snapshots();
   }
 
-  static fatchuser(){
+  static fatchuser() {
     return firestore.collection(usercollection).snapshots();
   }
-  static getname({uid}){
-    return firestore.collection(usercollection).where('id',isEqualTo: uid).snapshots();
+
+  static getname({uid}) {
+    return firestore
+        .collection(usercollection)
+        .where('id', isEqualTo: uid)
+        .snapshots();
   }
 }
